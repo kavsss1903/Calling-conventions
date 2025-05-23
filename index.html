@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calling Conventions Explained Through a Restaurant Visit</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+        }
+        
+        section {
+            padding: 2.5rem 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        h2 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: var(--secondary);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .hero {
+            background-color: var(--light);
+            text-align: center;
+            padding: 3rem 1.5rem;
+        }
+        
+        .hero h2 {
+            font-size: 2.2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .tab-container {
+            margin-top: 2rem;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            justify-content: center;
+        }
+        
+        .tab-button {
+            padding: 0.8rem 1.5rem;
+            background-color: #ddd;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .tab-button:hover {
+            background-color: #ccc;
+        }
+        
+        .tab-button.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .tab-content {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .story-step {
+            margin-bottom: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .story-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        table th {
+            background-color: var(--primary);
+            color: white;
+            text-align: left;
+            padding: 0.8rem;
+        }
+        
+        table td {
+            padding: 0.8rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .highlight {
+            background-color: #f0f7fc;
+        }
+        
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .recap {
+            background-color: var(--light);
+            padding: 2.5rem;
+            text-align: center;
+        }
+        
+        .recap h2 {
+            color: var(--accent);
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .button:hover {
+            background-color: #c0392b;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+        
+        .image-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .tab-button {
+                padding: 0.6rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Calling Conventions Explained Through a Restaurant Visit</h1>
+            <p>Let's make assembly function calls easy to understand!</p>
+        </div>
+    </header>
+    
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Learn Assembly Calling Conventions the Fun Way!</h2>
+            <p>
+                Hey there! Calling conventions can be pretty confusing, right? 
+                Here, I tried explaining them using a restaurant story to make it easier to get.
+            </p>
+        </div>
+    </section>
+    
+    <section id="what-are-calling-conventions">
+        <div class="container">
+            <h2>What Are Calling Conventions?</h2>
+            <p>
+                Think of calling conventions as "the rules of the road" for functions in a program. They tell us:
+            </p>
+            <ul style="margin: 1rem 0 1rem 2rem;">
+                <li>How to pass info to functions</li>
+                <li>Where return values should go</li>
+                <li>Who cleans up the mess afterward</li>
+            </ul>
+            <p>
+                Without these rules, it would be chaos - like if everyone at a restaurant spoke different languages and followed different customs!
+            </p>
+            
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-button active" onclick="openTab('story')">The Restaurant Story</button>
+                    <button class="tab-button" onclick="openTab('compare')">32-bit vs 64-bit</button>
+                    <button class="tab-button" onclick="openTab('why')">Why It Matters</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="story-explanation">
+        <div class="container">
+            <div id="story" class="tab-content active">
+                <h2>The Restaurant Story: How Functions Work</h2>
+                <p>
+                    Imagine you're hungry and decide to visit a restaurant. This is just like when your program needs something done and calls a function!
+                </p>
+                
+                <div class="story-step">
+                    <div class="story-header">
+                        <div class="step-icon">1</div>
+                        <div class="step-title">You = Main Function</div>
+                    </div>
+                    <p>
+                        You're the customer (the main program). When you're hungry (need something done), you go to a restaurant (call a function).
+                    </p>
+                    <p>
+                        <em>Just like in code: when your program needs to calculate something, it CALLS another function.</em>
+                    </p>
+                </div>
+                
+                <div class="story-step">
+                    <div class="story-header">
+                        <div class="step-icon">2</div>
+                        <div class="step-title">Waiter = Called Function</div>
+                    </div>
+                    <p>
+                        The waiter (the function you call) comes to your table ready to take your order and help you out.
+                    </p>
+                    <p>
+                        <em>In assembly: The function gets ready by setting up its workspace (the stack frame).</em>
+                    </p>
+                </div>
+                
+                <div class="story-step">
+                    <div class="story-header">
+                        <div class="step-icon">3</div>
+                        <div class="step-title">Notepad = Function Arguments</div>
+                    </div>
+                    <p>
+                        You tell the waiter what food you want. The waiter writes your order on a notepad to remember it.
+                    </p>
+                    <p>
+                        <em>In programming: We pass parameters to functions. In 32-bit systems, we put them on the stack. In 64-bit, often in registers (like RCX, RDX).</em>
+                    </p>
+                </div>
+                
+                <div class="story-step">
+                    <div class="story-header">
+                        <div class="step-icon">4</div>
+                        <div class="step-title">Kitchen = Function Work</div>
+                    </div>
+                    <p>
+                        The waiter takes your order to the kitchen, where the chef prepares your meal.
+                    </p>
+                    <p>
+                        <em>This is the function doing its actual work - calculations, processing data, whatever it was designed to do.</em>
+                    </p>
+                </div>
+                
+                <div class="story-step">
+                    <div class="story-header">
+                        <div class="step-icon">5</div>
+                        <div class="step-title">Serving Dish = Return Value</div>
+                    </div>
+                    <p>
+                        The waiter brings your meal back to the table. Here's the result you wanted!
+                    </p>
+                    <p>
+                        <em>In assembly: Functions put their return values in special registers - EAX (32-bit) or RAX (64-bit).</em>
+                    </p>
+                </div>
+                
+                <div class="story-step">
+                    <div class="story-header">
+                        <div class="step-icon">6</div>
+                        <div class="step-title">Cleanup = Stack Cleanup</div>
+                    </div>
+                    <p>
+                        After eating, someone needs to clean up. Sometimes the waiter does it (the function cleans up), sometimes you bus your own table (the caller cleans up).
+                    </p>
+                    <p>
+                        <em>Different calling conventions have different rules about who cleans up the stack after a function call.</em>
+                    </p>
+                </div>
+                
+                <div class="image-container">
+                    <svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Stack Frame Diagram - Simplified -->
+                        <rect x="100" y="10" width="200" height="130" fill="#ecf0f1" stroke="#34495e" stroke-width="2"/>
+                        
+                        <!-- Stack Sections -->
+                        <rect x="100" y="10" width="200" height="40" fill="#3498db" stroke="#34495e" stroke-width="2"/>
+                        <text x="200" y="35" text-anchor="middle" fill="white" font-weight="bold">Your Order (Parameters)</text>
+                        
+                        <rect x="100" y="50" width="200" height="30" fill="#e74c3c" stroke="#34495e" stroke-width="2"/>
+                        <text x="200" y="70" text-anchor="middle" fill="white" font-weight="bold">Return Address (Table #)</text>
+                        
+                        <rect x="100" y="80" width="200" height="60" fill="#2ecc71" stroke="#34495e" stroke-width="2"/>
+                        <text x="200" y="115" text-anchor="middle" fill="white" font-weight="bold">Waiter's Notes (Local Variables)</text>
+                        
+                        <text x="200" y="155" text-anchor="middle" fill="#34495e">Restaurant Order Slip (Stack Frame)</text>
+                    </svg>
+                </div>
+            </div>
+            
+            <div id="compare" class="tab-content">
+                <h2>32-bit vs. 64-bit: What's Different?</h2>
+                <p>
+                    Think of 32-bit and 64-bit systems as different restaurant chains with their own rules for ordering and serving food:
+                </p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>32-bit (cdecl)</th>
+                            <th>64-bit (x64)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>How you place an order</strong></td>
+                            <td>Write on a shared notepad (stack)</td>
+                            <td>Tell the waiter directly (registers) for the first 4-6 items</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td><strong>Where your food arrives</strong></td>
+                            <td>Always at the front counter (EAX)</td>
+                            <td>At the bigger front counter (RAX)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Who cleans up</strong></td>
+                            <td>You do (caller)</td>
+                            <td>Mostly the restaurant (less cleanup needed)</td>
+                        </tr>
+                        <tr class="highlight">
+                            <td><strong>Waiters' memory</strong></td>
+                            <td>Limited - 8 regular waiters</td>
+                            <td>Better - 16 waiters available</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <p style="margin-top: 1rem;">
+                    The 64-bit way is usually faster because the waiter remembers your order directly instead of writing it down and reading it later!
+                </p>
+            </div>
+            
+            <div id="why" class="tab-content">
+                <h2>Why This Restaurant Business Matters</h2>
+                <p>
+                    You might wonder, "Why should I care about all this restaurant talk?" Well, understanding calling conventions helps when:
+                </p>
+                
+                <div class="story-step">
+                    <div class="story-header">
+                        <div class="step-icon">🔍</div>
+                        <div class="step-title">Debugging Crashes</div>
+                    </div>
+                    <p>
+                        When a program crashes mysteriously, it's often because two parts of the code are following different "restaurant rules" - one expects the waiter to clean up, but the other doesn't clean up at all!
+                    </p>
+                </div>
+                
+                <div class="story-step">
+                    <div class="story-header">
+                        <div class="step-icon">🔒</div>
+                        <div class="step-title">Security Work</div>
+                    </div>
+                    <p>
+                        Hackers often exploit mismatch in calling conventions to break into systems. Understanding how the stack works helps you spot and prevent these attacks.
+                    </p>
+                </div>
+                
+                <div class="story-step">
+                    <div class="story-header">
+                        <div class="step-icon">🔧</div>
+                        <div class="step-title">Mix and Match Languages</div>
+                    </div>
+                    <p>
+                        When your C++ code needs to call assembly functions (or vice versa), you need to make sure they're both following the same "restaurant etiquette"!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="recap" id="recap">
+        <div class="container">
+            <h2>So What Have We Learned?</h2>
+            <p>
+                Calling conventions are like restaurant rules - they tell us how functions should communicate with each other. Our restaurant story helps remember how it works:
+            </p>
+            
+            <ul style="margin: 1rem auto; max-width: 500px; text-align: left; display: inline-block;">
+                <li>You (main function) go to a restaurant (call another function)</li>
+                <li>You give your order (parameters) to the waiter</li>
+                <li>The kitchen prepares your food (function does its work)</li>
+                <li>The waiter brings your meal (return value)</li>
+                <li>Someone cleans up afterward (stack cleanup)</li>
+            </ul>
+            
+            <p>
+                <strong>Now you can order function calls like a pro!</strong>
+            </p>
+            
+            <button class="button" onclick="window.location.href='#home'">Back to Top</button>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 | Created by Kavya Manda | X86 Exploit</p>
+            <p>A simple explanation of calling conventions using a restaurant story.</p>
+        </div>
+    </footer>
+
+    <script>
+        function openTab(tabName) {
+            // Hide all tab contents
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // Deactivate all tab buttons
+            var tabButtons = document.getElementsByClassName("tab-button");
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            // Show the selected tab content and activate the button
+            document.getElementById(tabName).classList.add("active");
+            
+            // Find the button that matches this tab
+            var buttons = document.getElementsByClassName("tab-button");
+            for (var i = 0; i < buttons.length; i++) {
+                if (buttons[i].textContent.toLowerCase().includes(tabName) || 
+                    (tabName === "story" && buttons[i].textContent.includes("Restaurant"))) {
+                    buttons[i].classList.add("active");
+                }
+            }
+        }
+    </script>
+</body>
+</html>
